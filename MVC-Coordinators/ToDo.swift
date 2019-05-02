@@ -20,4 +20,12 @@ struct ToDo {
     static func loadToDos() -> [ToDo]? {
         return nil
     }
+    
+    //MARK: Date Formatter
+    static let dueDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
 }
