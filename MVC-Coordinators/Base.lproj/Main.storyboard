@@ -18,13 +18,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="dCH-hZ-BOg">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="dCH-hZ-BOg" customClass="ToDoTableViewCell" customModule="MVC_Coordinators" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dCH-hZ-BOg" id="bSX-tG-hkJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOP-K4-FND">
+                                            <rect key="frame" x="52" y="11.5" width="334" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p7C-7X-v0h">
+                                            <rect key="frame" x="8" y="4" width="36" height="36"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="36" id="54n-Jz-QIY"/>
+                                                <constraint firstAttribute="height" constant="36" id="hR7-lH-S98"/>
+                                            </constraints>
+                                            <state key="normal" image="circle"/>
+                                            <state key="disabled" image="circle"/>
+                                            <state key="selected" image="check"/>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="bOP-K4-FND" secondAttribute="trailing" constant="8" id="M3l-UR-Lsr"/>
+                                        <constraint firstItem="bOP-K4-FND" firstAttribute="centerY" secondItem="bSX-tG-hkJ" secondAttribute="centerY" id="S8f-7P-xUC"/>
+                                        <constraint firstItem="p7C-7X-v0h" firstAttribute="leading" secondItem="bSX-tG-hkJ" secondAttribute="leading" constant="8" id="eUz-NK-tU6"/>
+                                        <constraint firstItem="p7C-7X-v0h" firstAttribute="centerY" secondItem="bSX-tG-hkJ" secondAttribute="centerY" id="jQD-QN-fon"/>
+                                        <constraint firstItem="bOP-K4-FND" firstAttribute="leading" secondItem="p7C-7X-v0h" secondAttribute="trailing" constant="8" id="omo-d8-JVi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="isCompleteButton" destination="p7C-7X-v0h" id="Fro-7s-7AQ"/>
+                                    <outlet property="titleLabel" destination="bOP-K4-FND" id="Ibw-Y4-Zdw"/>
+                                    <segue destination="kau-hp-W7U" kind="show" identifier="showDetail" id="Vbk-AB-Twt"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -179,12 +209,12 @@
                     <navigationItem key="navigationItem" title="New ToDo" largeTitleDisplayMode="never" id="lMa-Qy-fxn">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="7Sb-T8-C2d">
                             <connections>
-                                <segue destination="4YE-Ux-4Iy" kind="unwind" unwindAction="unwindToToDoListWithSegue:" id="i6g-uR-6w1"/>
+                                <segue destination="4YE-Ux-4Iy" kind="unwind" unwindAction="unwindToToDoListWithSegue:" id="i6w-bN-MjH"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="ktl-79-aA7">
                             <connections>
-                                <segue destination="4YE-Ux-4Iy" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="y67-UC-TpR"/>
+                                <segue destination="4YE-Ux-4Iy" kind="unwind" identifier="saveUnwind" unwindAction="unwindToToDoListWithSegue:" id="gWV-KK-TwA"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -216,7 +246,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQR-hW-dl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2146" y="106"/>
+            <point key="canvasLocation" x="2090" y="512"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vk9-S1-ctp">
@@ -241,4 +271,7 @@
         <image name="check" width="27" height="27"/>
         <image name="circle" width="27" height="27.5"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vbk-AB-Twt"/>
+    </inferredMetricsTieBreakers>
 </document>
