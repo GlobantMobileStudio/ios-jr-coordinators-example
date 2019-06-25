@@ -8,11 +8,24 @@
 
 import UIKit
 
-class ToDoTableViewCell: UITableViewCell {
+//MARK: - Cell protocol
+@objc protocol ToDoCellDelegate: class {
+    func checkmarkTapped(sender: ToDoTableViewCell)
+}
 
+class ToDoTableViewCell: UITableViewCell {
+    
+    //MARK: Variables
+    var delegate: ToDoCellDelegate?
+    
     //MARK: IBOutlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var isCompleteButton: UIButton!
+    
+    //MARK: IBActions
+    @IBAction func completeButtonTapped(_ sender: UIButton) {
+        delegate?.checkmarkTapped(sender: self)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

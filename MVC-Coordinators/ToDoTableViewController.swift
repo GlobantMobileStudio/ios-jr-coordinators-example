@@ -65,6 +65,7 @@ extension ToDoTableViewController {
         let todo = toDos[indexPath.row]
         cell.titleLabel?.text = todo.title
         cell.isCompleteButton.isSelected = todo.isComplete
+        cell.delegate = self
         return cell
     }
     
@@ -76,6 +77,18 @@ extension ToDoTableViewController {
         if editingStyle == .delete {
             toDos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+}
+
+//MARK: ToDoCellDelegate delegate
+extension ToDoTableViewController: ToDoCellDelegate {
+    func checkmarkTapped(sender: ToDoTableViewCell) {
+        if let indexPath = tableView.indexPath(for: sender) {
+            var todo = toDos[indexPath.row]
+            todo.isComplete = !todo.isComplete
+            toDos[indexPath.row] = todo
+            tableView.reloadRows(at: [indexPath], with: .automatic)
         }
     }
 }

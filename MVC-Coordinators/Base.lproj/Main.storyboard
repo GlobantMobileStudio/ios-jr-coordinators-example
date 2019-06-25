@@ -40,6 +40,9 @@
                                             <state key="normal" image="circle"/>
                                             <state key="disabled" image="circle"/>
                                             <state key="selected" image="check"/>
+                                            <connections>
+                                                <action selector="completeButtonTapped:" destination="dCH-hZ-BOg" eventType="touchUpInside" id="Ob4-kn-6af"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -272,6 +275,6 @@
         <image name="circle" width="27" height="27.5"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vbk-AB-Twt"/>
+        <segue reference="BQF-SH-gDW"/>
     </inferredMetricsTieBreakers>
 </document>
